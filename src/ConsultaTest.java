@@ -20,8 +20,8 @@ public class ConsultaTest {
     @Test 
 
     public void TestaValorDaConsultaAgendadaComAntecedencia(){
-        LocalDateTime dias = LocalDateTime.plusDays(30);
-        ConsultaAgendada teste = new ConsultaAgendada("Roberto", LocalDateTime.plusDays(30), EEspecialidade.DERMATOLOGIA);
+        LocalDateTime dias = LocalDateTime.now().plusDays(30);
+        ConsultaAgendada teste = new ConsultaAgendada("Roberto", dias, EEspecialidade.DERMATOLOGIA);
         
         assertEquals(140.00, teste.valorConsulta(), .01);
     }
