@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 
 /** 
  * MIT License
@@ -46,8 +47,9 @@ public class ConsultaRetorno extends Consulta {
 	 * @param original consulta original da qual este é o retorno
 	 */
 	public ConsultaRetorno(LocalDateTime hora, Consulta original) {
-		//TODO
-		super(null, null, null);
+		super(original.nomePaciente, hora, original.especialidade);
+		consultaAnterior = original;
+		
 	}
 
 	/**
@@ -55,8 +57,13 @@ public class ConsultaRetorno extends Consulta {
 	 * @return valor da consulta de retorno (atualmente, {@code 0})
 	 */
 	public double valorConsulta() {
-		//TODO
-		return 0;
+		double valor = 0;
+		LocalDateTime data = consultaAnterior.horario;
+		long dias = data.until(horario, ChronoUnit.DAYS);
+		if(dias > INTERVALO_MAXIMO){
+			valor = consultaAnterior.valorConsulta();
+		}
+		return valor;
 	}
 
 }

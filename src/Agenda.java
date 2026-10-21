@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,9 +75,15 @@ public class Agenda {
 	 * @param dia o dia para o qual se deseja obter a agenda
 	 * @return uma {@code String} com as consultas do dia 
 	 */
-	public String agendaDoDia(LocalDate dia) {
-		//TODO
-		return "";
+	public String agendaDoDia(LocalDateTime dia) {
+		String consultasDoDia = "";
+		for(int i = 0; i < agenda.size(); i++){
+			if(dia == agenda.get(i).horario){
+				consultasDoDia += agenda.get(i).toString();
+				consultasDoDia += "\n";
+			}
+		}
+		return consultasDoDia;
 	}
 
 }
